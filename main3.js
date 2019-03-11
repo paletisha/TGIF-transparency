@@ -2,7 +2,7 @@ var data;
 
 
 
-if (window.location.pathname == ("/senateAttendance.html")) {
+if (document.title == "/senate attendance") {
     fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
         method: "GET",
         headers: {
@@ -23,7 +23,7 @@ if (window.location.pathname == ("/senateAttendance.html")) {
         
 
     })
-} else if (window.location.pathname == ("/senateLoyalty.html")) {
+} else if (document.title == "senate loyalty") {
     fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
         method: "GET",
         headers: {
@@ -42,7 +42,7 @@ if (window.location.pathname == ("/senateAttendance.html")) {
         document.getElementById("spin2").style.display="none";
         document.getElementById("spin3").style.display="none";
     })
-} else if (window.location.pathname == ("/houseAttendance.html")) {
+} else if (document.title == "house attendance") {
     fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
         method: "GET",
         headers: {
@@ -61,7 +61,7 @@ if (window.location.pathname == ("/senateAttendance.html")) {
         document.getElementById("spin2").style.display="none";
         document.getElementById("spin3").style.display="none";
     })
-} else if (window.location.pathname == ("/houseLoyalty.html")) {
+} else if (document.title == "house loyalty") {
     fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
         method: "GET",
         headers: {
