@@ -113,6 +113,7 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
     memberstable(data.results[0].members);
     states();
     activateListeners();
+    document.getElementById("spin1").style.display="none";
 })
 
 function activateListeners() {
@@ -136,7 +137,8 @@ function partyFilter() {
 
 
 
-    addFilter(checkParty)
+    addFilter(checkParty);
+    document.getElementById("spin1").style.display="none";
 }
 
 //partyFilter();
@@ -259,8 +261,9 @@ Table Creation
 function memberstable(arrayToBuild) {
     var tablebody = document.getElementById("tbody");
     tablebody.innerHTML = '';
+    
+    
 
-    console.log("NEW TABLW", arrayToBuild)
     for (var i = 0; i < arrayToBuild.length; i++) {
         var newTd1 = document.createElement("td");
         var newTd2 = document.createElement("td");
@@ -298,10 +301,16 @@ function memberstable(arrayToBuild) {
         var tablebody = document.getElementById("tbody");
 
         tablebody.append(newTr);
-
+        
         console.log(party);
 
     }
+    
+    if (arrayToBuild.length == 0) {
+            var newTr2 = document.createElement("tr");
+            newTr2.append("No available data with the selected criteria");
+            tablebody.append(newTr2);
+        }
 
 
 

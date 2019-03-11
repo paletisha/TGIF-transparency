@@ -8,22 +8,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="senateAttendance.css">
-       <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
 </head>
 
-<body id="attendance">
+<body id="attendance" onload="">
     <div class="container-fluid" class="headim">
                <div class="row">
-               <div class="col-2">
-                <image src="assets/logo11.jpg" alt="tgiflogo" class="logo"></image>
-                </div>
-                <h1 class="headText">TGIF</h1>
-
-
+                <image src="assets/tgiflogo2.jpg" alt="tgiflogo" class="logo"></image>
+                <span class="headText">TGIF</span>
+</div>
     </div>
-     </div>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <ul class="navbar-nav">
             <li class="navbar-item">
@@ -64,72 +57,98 @@
         </ul>
     </nav>
     <div class="container">
-        <h2>Senators</h2>
-        <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
-    </div>
-    <div class="container">
+       
+        <div class="row">
+            <div class="col-6">
+                <h2>Attendance</h2>
+                <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
-        <form>
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-6">
-                        <span>Filter by party</span>
-                        <input type="checkbox" name="party" value="D" id="democrat">Democrat
-                        <input type="checkbox" name="party" value="R" id="republican">Republican
-                        <input type="checkbox" name="party" value="I" id="independent">Independent
-                    </div>
-
-                    <div class="col-4"></div>
-                    <div class="col-2" class="row">
-
-                        <span>Filter by state</span>
-                        <select id="selectbody">
-                            <option value="All">All States</option>
-
-
-                        </select>
-                    </div>
-                </div>
-                <div>
-
-
-
-
-
-                </div>
-
+                <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
             </div>
-        </form>
-
-
-
-
-        <table class="table table-striped table-bordered">
+            <div class="col-6">
+               
+                <h2>Senate at a glance</h2>
+              
+              
+              
+              <div id="app">
+                  {{message}}
+              </div>
+              
+              
+              
+                <table class="table table-striped table-bordered">
   <thead class="thead-dark">
-                <tr>
-                    <th>Full Name</th>
-                    <th>Party</th>
-                    <th>State</th>
-                    <th>Seniority</th>
-                    <th>Total votes</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
+                    <tr>
+                        <th>Party</th>
+                        <th>No. Reps</th>
+                        <th>% voted with party</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
 
-            </tbody>
-        </table>
-                        <div class="spinner" id="spin1">
+                    </tbody>
+                    
+                </table>
+                <div class="spinner" id="spin1">
   <div class="dot1"></div>
   <div class="dot2"></div>
 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+               <h2>Least Engaged (Bottom 10%)</h2>
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th> No. Missed Votes </th>
+                        <th> % Missed Votes </th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody2">
+
+                    </tbody>
+                </table>
+                <div class="spinner" id="spin2">
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+</div>
+            </div>
+            <div class="col-6">
+               <h2>Most Engaged (Top 10%)</h2>
+                <table class="table table-striped table-bordered">
+<thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th> No. Missed Votes </th>
+                        <th> % Missed Votes </th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody3">
+
+                    </tbody>
+                </table>
+<div class="spinner" id="spin3">
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+</div>
+            </div>
+        </div>
+
+
     </div>
 
     <!--<script src="senate.js">
     </script>-->
-    <script src="main.js">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vuetable.js">
     </script>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

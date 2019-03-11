@@ -18,6 +18,7 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
     memberstable(data.results[0].members);
     states();
     activateListeners();
+    document.getElementById("spin1").style.display="none";
 })
 
 function activateListeners() {
@@ -40,6 +41,7 @@ function partyFilter() {
 
 
     addFilter(checkParty);
+    document.getElementById("spin1").style.display="none";
 }
 
 

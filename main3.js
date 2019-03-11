@@ -259,9 +259,24 @@ function calculations() {
     var topAttendance = [];
 
     function topAtt() {
-        for (i = 0; i < sortlength; i++) {
-            topAttendance.push(Attmembers[i]);
+        for (i = 0; i < Attmembers.length; i++) {
+            //topAttendance.push(Attmembers[i]);
+            if (topAttendance.length < sortlength) {
+                topAttendance.push(Attmembers[i]);
+                
+            }
+            
+            if (topAttendance.length >= sortlength) {
+                if (Attmembers[i].missed_votes_pct == members[i+1].missed_votes_pct) {
+                    topAttendance.push(Attmembers[i+1]);
+                    
+                }
+                else {
+                    break;
+                }
+            }
         }
+        
     }
 
     topAtt();
@@ -347,7 +362,7 @@ function TableAttOne() {
         row.insertCell().innerHTML = stats.party[i].numVotes;
         row.insertCell().innerHTML = stats.party[i].avgVotes;
         tableOne.append(row);
-
+        
 
     }
 
@@ -383,7 +398,7 @@ function tableAttThree() {
     for (var i = 0; i < stats.botmissVotepct.length; i++) {
         var row = document.createElement("tr");
 
-        row.insertCell().innerHTML = stats.botmissVotepct[i].first_name + " " + stats.missVotepct[i].last_name;
+        row.insertCell().innerHTML = stats.botmissVotepct[i].first_name + " " + stats.botmissVotepct[i].last_name;
         row.insertCell().innerHTML = stats.botmissVotepct[i].missed_votes;
         row.insertCell().innerHTML = stats.botmissVotepct[i].missed_votes_pct;
         tableThree.append(row);
@@ -418,7 +433,7 @@ function TableAttFive() {
     var tableFive = document.getElementById("tbody5");
     for (var i = 0; i < stats.topPartyVotepct.length; i++) {
         var row = document.createElement("tr");
-        row.insertCell().innerHTML = stats.topPartyVotepct[i].first_name + " " + stats.missVotepct[i].last_name;
+        row.insertCell().innerHTML = stats.topPartyVotepct[i].first_name + " " + stats.topPartyVotepct[i].last_name;
         row.insertCell().innerHTML = stats.topPartyVotepct[i].total_votes;
         row.insertCell().innerHTML = stats.topPartyVotepct[i].votes_with_party_pct;
         tableFive.append(row);
@@ -434,7 +449,7 @@ function TableAttSix() {
     var tableSix = document.getElementById("tbody6");
     for (var i = 0; i < stats.botPartyVotepct.length; i++) {
         var row = document.createElement("tr");
-        row.insertCell().innerHTML = stats.botPartyVotepct[i].first_name + " " + stats.missVotepct[i].last_name;
+        row.insertCell().innerHTML = stats.botPartyVotepct[i].first_name + " " + stats.botPartyVotepct[i].last_name;
         row.insertCell().innerHTML = stats.botPartyVotepct[i].total_votes;
         row.insertCell().innerHTML = stats.botPartyVotepct[i].votes_with_party_pct;
         tableSix.append(row);
@@ -443,3 +458,22 @@ function TableAttSix() {
 }
 
 console.log(stats.botPartyVotepct);
+
+function readMore () {
+    var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+
+
